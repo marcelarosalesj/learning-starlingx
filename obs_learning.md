@@ -68,6 +68,10 @@ BuildRequires : libnuma-devel
 BuildRequires : numactl-devel
 %endif
 ```
+* If you want to get the rpm linter errors similar to OBS infra, use this
+```
+osc rpmlintlog home:marcelarosalesj nfv openSUSE_Leap_15.0  x86_64
+````
 
 ## References
 * [OBS Beginners Guide](https://openbuildservice.org/help/manuals/obs-beginners-guide/)
