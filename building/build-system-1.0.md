@@ -4,6 +4,7 @@
 * Mirror: repository containing all RPM dependencies
 * Repo: StarlingX projects/services
 * Tools: scripts and tools for StarlingX packages and image building
+* Cengn mirror: latest green is [here](http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_green_build/)
 
 ## StarlingX Build Guide
 * [StarlingX Build System 1.0](https://docs.starlingx.io/contributor/build_guides/latest/index.html)
@@ -32,7 +33,13 @@ build-pkgs
 build-iso
 ```
 
-## Want to rebuild the image with own changes?
+## Want to rebuild one package with own changes?
 ```
+# Do changes on your branch
+
+# Rebuild package
+# Note: If you want to build an iso later, do not use --no-build-info flag.
+build-pkgs fm-common --clean
+build-pkgs fm-common --no-descendants --no-build-info
 
 ```
