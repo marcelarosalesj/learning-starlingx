@@ -12,7 +12,8 @@ At least for StarlingX Maintenance, most services seem to be systemd standardize
 vi mtce/src/pmon/scripts/pmon.service
 
 [Service]
-Type=forking
+-Type=forking
++Type=simple
 -ExecStart=/etc/rc.d/init.d/pmon start
 -ExecStop=/etc/rc.d/init.d/pmon stop
 -ExecReload=/etc/rc.d/init.d/pmon reload
@@ -42,6 +43,8 @@ vi mtce/centos/mtce.spec
 -%{_sysconfdir}/init.d/pmon
  %{local_bindir}/pmond
 ```
+Note: as this pmon is the main program and doesn't fork, it's service `Type=` is `simple`.
+* [systemd.service man page](https://manpages.debian.org/jessie/systemd/systemd.service.5.en.html)
 
 ## How to test this change?
 You would need to rebuild the package you modified, and then rebuild the ISO. You can look 
@@ -56,7 +59,9 @@ python runner.py --run-suite Provision
 sleep 600
 python runner.py --run-suite Sanity-Test
 ```
-Note: You need to have `bootimage.iso` and `stx-openstack.tgz` in automation-robot-suite directory.
+Note: You need to have `bootimage.iso` and `stx-openstack.tgz` in automation-robot-suite directory for installation and
+provision steps. Then, you need `cirros-0.4.0-x86_64-disk.qcow2` and `CentOS-7-x86_64-GenericCloud.qcow2` for sanity
+test. All of that is explained in automated-robot-suite README.md.
 
 ## References
 * [Converting sysvinit scripts to
