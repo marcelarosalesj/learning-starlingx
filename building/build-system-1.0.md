@@ -23,6 +23,8 @@ git pull
 # Update mirror (Terminal 1)
 cd /localdisk/ 
 ./download_mirror.sh 
+
+# Put missing RPMs into build environment (Terminal 3)
 cp -r $HOME/tools/centos-mirror-tools/output/stx-r1/ $HOME/starlingx/mirror/CentOS/
 
 # Clean packages and rebuild image (Terminal 2)
