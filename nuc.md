@@ -60,3 +60,32 @@ build-iso
 ```
 
 At this point, after an StarlingX installation, the Operating System will be able to see the second interface, but StarlingX System Inventory won't.
+
+## 2. Sysinv patches
+The OS can see the USB-ethernet interface, but StarlingX doesn't. We need to patch Sysinv for specifically identify our adapter and interface.
+
+1. Get the adapter MAC address
+
+Connect the adapter and see with `ifconfig` its MAC address. In this case it is
+```
+enp0s20f0u11: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 00:24:9b:16:77:ce  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+2. Modify sysinv to identify the USB/Ethernet adapter.
+Add your adapter's interface name and MAC.
+```
+# TO-DO
+```
+Then, rebuild sysinv and the iso.
+```
+build-pkgs sysinv --clean
+build-pkgs sysinv
+build-iso
+```
+This ISO now has the kernel and sysinv patches.
+
