@@ -1,8 +1,9 @@
 # MultiOS Maintenance Roadmap
 
-## Current Tasks
+## Current tasks
 * specfiles metal
 * systemd metal
+* document openSUSE enabling
 
 ### specfiles metal
 
@@ -24,10 +25,9 @@ Blocked:
 * pxe-network-installer - [depends on
   vmlinuz](https://opendev.org/starlingx/metal/src/branch/master/installer/pxe-network-installer/centos/pxe-network-installer.spec#L12)
 
-
 To-do:
-* Clean up openSUSE spec files `mtce-common`, `mtce-storage` and `platform-kickstarts`.
-* Use this knowledge to clean CentOS spec files.
+* Wait for specs to be merged as they are.
+* Then, start working on cleaning up openSUSE spec files `mtce-common`, `mtce-storage` and `platform-kickstarts`.
 
 ### systemd metal
 Work in progress:
@@ -61,14 +61,18 @@ Work in progress:
 * pxe-network-installer
 
 To-do:
-* Identify what services can be started, stopped and restarted after systemd changes ([these ones](https://github.com/marcelarosalesj/learning-starlingx/blob/master/systemd.md)) using Service Manager.
-
-
-## New tasks
-* document openSUSE enabling
+* Document pmon interaction dependencies with SM.
 
 ### document openSUSE enabling
 Previously some experiments were performed trying to enable Maintenance service on an openSUSE VM.
 
 To-do:
-* Document the experiments, findings and blocks.
+* Open bugs for enabling issues of each metal service. Start with pmon.
+
+## New tasks
+* TBD
+
+### TBD
+
+## Completed tasks
+* Document systemd convertion knowhow [here](https://github.com/marcelarosalesj/learning-starlingx/blob/master/systemd.md) and experimentation with pmon.
