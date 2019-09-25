@@ -1,33 +1,51 @@
 # MultiOS Maintenance Roadmap
 
 ## Current tasks
-* specfiles metal
-* systemd metal
-* document openSUSE enabling
+* [wip] specfiles metal
+* [wip] spec files integration with OBS
+* [wip] StarlingX configuration on openSUSE
+* [on hold] systemd metal
+* [on hold] document openSUSE enabling
 
 ### specfiles metal
-
-[Gerrit 681146](https://review.opendev.org/#/c/681146/)
+Clean up:
 * mtce-common - _Requires is not good enough_
-* mtce-control
-* mtce-compute
 * mtce-storage - _Requires is not good enough_
 * platform-kickstarts - _BuildRequires is not good enough_
-* python-inventoryclient 
-
-[Gerrit 680816](https://review.opendev.org/#/c/680816/)
-* mtce
-
-[Gerrit 680814](https://review.opendev.org/#/c/680814/)
-* inventory
+* python-inventoryclient - _some python files set executable._
 
 Blocked:
-* pxe-network-installer - [depends on
-  vmlinuz](https://opendev.org/starlingx/metal/src/branch/master/installer/pxe-network-installer/centos/pxe-network-installer.spec#L12)
+* pxe-network-installer - [depends on vmlinuz](https://opendev.org/starlingx/metal/src/branch/master/installer/pxe-network-installer/centos/pxe-network-installer.spec#L12)
 
-To-do:
-* Wait for specs to be merged as they are.
-* Then, start working on cleaning up openSUSE spec files `mtce-common`, `mtce-storage` and `platform-kickstarts`.
+Completed:
+* opensuse specs merged:
+    * mtce
+    * inventory
+    * mtce-common
+    * mtce-control
+    * mtce-compute
+    * mtce-storage
+    * platform-kickstarts
+    * python-inventoryclient
+
+### spec files integration with OBS
+Work on the integration of metal spec files with OBS. Use sysinv as an example: [spec file](https://opendev.org/starlingx/config/src/branch/master/sysinv/sysinv/opensuse/sysinv.spec) and [service file](https://build.opensuse.org/package/view_file/Cloud:StarlingX:2.0/sysinv/_service?expand=1).
+
+Metal integration with OBS:
+* mtce
+* inventory
+* mtce-common
+* mtce-control
+* mtce-compute
+* mtce-storage
+* platform-kickstarts
+* python-inventoryclient
+
+Completed:
+* TBD
+
+### StarlingX configuration on openSUSE
+Identify what ansible and puppet dependencies for configuring StarlingX are met on openSUSE and which ones are not.
 
 ### systemd metal
 Work in progress:
@@ -69,10 +87,6 @@ Previously some experiments were performed trying to enable Maintenance service 
 To-do:
 * Open bugs for enabling issues of each metal service. Start with pmon.
 
-## New tasks
-* TBD
-
-### TBD
-
 ## Completed tasks
 * Document systemd convertion knowhow [here](https://github.com/marcelarosalesj/learning-starlingx/blob/master/systemd.md) and experimentation with pmon.
+* Initial openSUSE spec files for metal in opendev - [Gerrit 681146](https://review.opendev.org/#/c/681146/), [Gerrit 680816](https://review.opendev.org/#/c/680816/), [Gerrit 680814](https://review.opendev.org/#/c/680814/)
