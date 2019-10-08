@@ -4,7 +4,8 @@
 * [on hold] specfiles metal
 * [wip] spec files integration with OBS
 * [wip] StarlingX configuration on openSUSE
-* [wip] StarlingX Flock openSUSE enabling
+* [blocked] StarlingX MTCE openSUSE enabling
+* [wip] kickstart to autoYaST
 * [on hold] document openSUSE enabling
 * [on hold] systemd metal
 
@@ -38,7 +39,7 @@ Pending
 
 * mtce - This work is waiting for this patch to be merged https://review.opendev.org/#/c/678627
 
-In review for OBS
+Completed:
 
 * inventory
 * mtce-common
@@ -47,42 +48,19 @@ In review for OBS
 * mtce-storage
 * platform-kickstarts
 * python-inventoryclient
-
-Completed:
-* None yet
-
 ### StarlingX configuration on openSUSE
 Identify what ansible and puppet dependencies for configuring StarlingX are met on openSUSE and which ones are not.
 
-### StarlingX Flock openSUSE enabling
+### StarlingX MTCE openSUSE enabling
 For this step the objective is to identify what dependencies are missing to run the Flock binaries on an openSUSE system. I'm going to skip the automation step, meaning that I'm not going to launch the services using systemd neither Service Manager. Also, the target OS is openSUSE Leap 15.1
 
+* The experiment is described [here](http://lists.starlingx.io/pipermail/starlingx-discuss/2019-October/006430.html)
+* Results are [here](https://github.com/marcelarosalesj/learning-starlingx/blob/master/roadmap/opensuse-mtce-enabling.md)
 
-**Components:**
-* mtce
-    * hostw.service
-    * lmon.service
-    * hwclock.service
-    * mtclog.service
-    * mtcClient.service
-    * config.service
-    * hbsClient.service
-    * goenabled.service
-    * runservices.service
-    * pmon.service
-    * fsmon.service
-    * hwmon.service
-    * mtcalarm.service
-* mtce-control
-    * hbsAgent.service
-* mtce-compute
-    * goenabled-worker.service
-* mtce-storage
-    * goenabled-storage.service
-* inventory
-    * Inventory-agent.service
-    * Inventory-conductor.service
-    * inventory-api.service
+**The enabling of MTCE is blocked right now because MTCE runs after StarlingX provisioning.**
+
+### kickstart to autoYaST
+Start this activity by identifying what is the kickstart file that an StarlingX Simplex (CentOS based) runs.
 
 ### document openSUSE enabling
 Previously some experiments were performed trying to enable Maintenance service on an openSUSE VM.
@@ -129,3 +107,4 @@ To-do:
 ## Completed tasks
 * Document systemd convertion knowhow [here](https://github.com/marcelarosalesj/learning-starlingx/blob/master/systemd.md) and experimentation with pmon.
 * Initial openSUSE spec files for metal in opendev - [Gerrit 681146](https://review.opendev.org/#/c/681146/), [Gerrit 680816](https://review.opendev.org/#/c/680816/), [Gerrit 680814](https://review.opendev.org/#/c/680814/)
+* StarlingX MTCE openSUSE enabling first assessment. All packages are installable, all service's binaries were run and failed due to missing configuration.
